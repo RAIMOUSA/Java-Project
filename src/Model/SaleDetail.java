@@ -2,32 +2,36 @@ package Model;
 
 public class SaleDetail {
     private int quantity;
-    private Sale sale;
-    private Products product;
+    private int productCode;
+    private int saleCode;
 
-    public SaleDetail(int quantity, Sale sale, Products product) {
+    public SaleDetail(int quantity, int productCode, int saleCode) {
         this.quantity = quantity;
-        this.sale = sale;
-        this.product = product;
+        this.productCode = productCode;
+        this.saleCode = saleCode;
     }
 
-    public String toString(){
-        return "Les informations de la vente sont: " + quantity + " " + sale.toString() + " " + product.toString();
+    public int getQuantity() {
+        return quantity;
     }
 
-    public Sale getSale() {
-        return sale;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public void setSale(Sale sale) {
-        this.sale = sale;
+    public int getProductCode() {
+        return productCode;
     }
 
-    public Products getProduct() {
-        return product;
+    public void setProductCode(int productCode) {
+        this.productCode = productCode;
     }
 
-    public void setProduct(Products product) {
-        this.product = product;
+    public int getSaleCode() {
+        return saleCode;
+    }
+
+    public void setSaleCode(int saleCode) {
+        this.saleCode = saleCode;
     }
 }

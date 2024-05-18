@@ -2,22 +2,30 @@ package Model;
 
 public class Contact {
     private String mail;
-    private int phoneNumber;
-    private Customer customer;
+    private String phoneNumber;
 
-    public Contact(String mail,Customer customer, int phoneNumber) {
+
+    public Contact(String mail, String phoneNumber) {
         this.mail = mail;
-        this.customer = customer;
         this.phoneNumber = phoneNumber;
     }
-
-    public Contact(String mail,Customer customer) {
+    public Contact(String mail) {
         this.mail = mail;
-        this.customer = customer;
+
+    }
+    public String getMail() {
+        return mail;
     }
 
-    public String toString() {
-        return "Les informations du contact sont: \nMail: " + mail;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

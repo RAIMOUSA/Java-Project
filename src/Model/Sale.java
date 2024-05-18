@@ -1,34 +1,41 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class Sale {
     private int code;
-    private Date date;
-    private Customer customer;
-    private List<SaleDetail> saleDetails;
+    private LocalDate date;
+    private int userID;
 
-    public Sale(int code, Date date, Customer customer, List<SaleDetail> saleDetails) {
+    public Sale(int code, LocalDate date, int userID) {
         this.code = code;
         this.date = date;
-        this.customer = customer;
-        this.saleDetails = saleDetails;
+        this.userID = userID;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public int getCode() {
+        return code;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public List<SaleDetail> getSaleDetails() {
-        return saleDetails;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setSaleDetails(List<SaleDetail> saleDetails) {
-        this.saleDetails = saleDetails;
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

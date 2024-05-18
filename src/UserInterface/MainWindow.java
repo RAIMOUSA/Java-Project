@@ -1,10 +1,10 @@
-package userInterface;
-
-import Model.Sale;
+package UserInterface;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Exception.*;
 
 public class MainWindow extends JFrame implements ActionListener {
 
@@ -33,9 +33,9 @@ public class MainWindow extends JFrame implements ActionListener {
         crud.add(clientListening);
 
         JMenu search = new JMenu("Recherches");
-        JMenuItem customerSaleDetails = new JMenuItem("CustomerSaleDetails");
-        JMenuItem diet = new JMenuItem("ProductSaleDetails");
-        JMenuItem recipe = new JMenuItem("SaleResume");
+        JMenuItem customerSaleDetails = new JMenuItem("Ventes du client");
+        JMenuItem diet = new JMenuItem("Statistiques mensuelles du type de produit");
+        JMenuItem recipe = new JMenuItem("Ventes journalière");
 
         search.addActionListener(this);
         customerSaleDetails.addActionListener(this);
@@ -47,15 +47,15 @@ public class MainWindow extends JFrame implements ActionListener {
         search.add(recipe);
 
         JMenu jobTask = new JMenu("Tache Metier");
-        JMenuItem fidelity = new JMenuItem("Carte de fidélité");
+        JMenuItem fidelity = new JMenuItem("Ajouter des promotions");
 
         jobTask.addActionListener(this);
         fidelity.addActionListener(this);
 
         jobTask.add(fidelity);
 
-        JMenu vegetableThread = new JMenu("Animation ski");
-        JMenuItem vegetableMoving = new JMenuItem("Animation ski");
+        JMenu vegetableThread = new JMenu("Thread");
+        JMenuItem vegetableMoving = new JMenuItem("Animation promos");
 
         vegetableThread.addActionListener(this);
         vegetableMoving.addActionListener(this);
@@ -72,35 +72,34 @@ public class MainWindow extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    private JPanel gePanel(String name) {
-        // TODO : do this a better way. Maybe with generics ? or even state design pattern ?
+    private JPanel gePanel(String name) throws ProductException {
         switch (name) {
             case "Ajout d'un client" -> {
-                 return new AddClientPanel();
+                 return new AddCustomerPanel();
             }
             case "Modification d'un client" -> {
-                 return new ModifyClientPanel();
+                 return new ModifyCustomerListPanel();
             }
             case "Listing des Clients" -> {
-                 return new ListingClientPanel();
+                 return new ListingCustomerPanel();
             }
             case "Suppression d'un client" -> {
-                return new DeleteClientPanel();
+                return new DeleteCustomerPanel();
             }
-            case "CustomerSaleDetails" -> {
-                return new CustomerSaleDetailsPanel();
+            case "Ventes du client" -> {
+                return new ClientPurchasePanel();
             }
-            case "ProductSaleDetails" -> {
-                return new ProductSaleDetailsPanel();
+            case "Statistiques mensuelles du type de produit" -> {
+                return new MonthlySaleStatsPanel();
             }
-            case "SaleResume" -> {
-                return new SaleResumePanel();
+            case "Ventes journalière" -> {
+                return new ListingSalePanel();
             }
-            case "Carte de fidélité" -> {
-                return new FidelityCardPanel();
+            case "Ajouter des promotions" -> {
+                return new PromotionPanel(null);
             }
-            case "Animation ski" -> {
-                return new SkiAnimationPanel();
+            case "Animation promos" -> {
+                return new PromotionScrollPanel();
             }
         }
         return null;
@@ -112,7 +111,11 @@ public class MainWindow extends JFrame implements ActionListener {
         if (currentPanel != null) {
             this.remove(currentPanel);
         }
-        currentPanel = this.gePanel(action);
+        try {
+            currentPanel = this.gePanel(action);
+        } catch (ProductException e) {
+            throw new RuntimeException(e);
+        }
         this.add(currentPanel);
         this.revalidate();
         this.repaint();

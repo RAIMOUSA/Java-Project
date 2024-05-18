@@ -8,108 +8,114 @@ public class Customer {
     private int userID;
     private String firstName;
     private String lastName;
-    private LocalDate birthDate;
+    private LocalDate dateOfBirth;
     private boolean isProfessional;
-    private char sexe;
-    private Contact contact;
-    private Locality locality;
-    private FidelityCard fidelityCard;
-    private List<Sale> sales;
+    private char gender;
+    private int localityID;
+    private String mail;
 
-    public Customer(int userID, String firstName, String lastName, LocalDate birthDate, boolean isProfessional, char sexe, Contact contact, Locality locality, FidelityCard fidelityCard, List<Sale> sales) { // And this line
+    public Customer(int userID, String firstName, String lastName, LocalDate dateOfBirth, boolean isProfessional, char gender, int localityID, String mail) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.dateOfBirth = dateOfBirth;
         this.isProfessional = isProfessional;
-        this.sexe = sexe;
-        this.contact = contact;
-        this.locality = locality;
-        this.fidelityCard = fidelityCard;
-        this.sales = sales;
+        this.gender = gender;
+        this.localityID = localityID;
+        this.mail = mail;
     }
 
-    public void setUserID(int userID) {
+    public Customer(int userID, String firstName, String lastName, boolean isProfessional, int localityID, String mail) {
         this.userID = userID;
-    }
-
-    public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
+        this.isProfessional = isProfessional;
+        this.localityID = localityID;
+        this.mail = mail;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public Customer(int userID, String firstName, String lastName, LocalDate dateOfBirth, boolean isProfessional, int localityID, String mail) {
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.isProfessional = isProfessional;
+        this.localityID = localityID;
+        this.mail = mail;
     }
 
-    public void setProfessional(boolean professional) {
-        isProfessional = professional;
-    }
-
-    public void setSexe(char sexe) {
-        this.sexe = sexe;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    public void setLocality(Locality locality) {
-        this.locality = locality;
-    }
-
-    public void setFidelityCard(FidelityCard fidelityCard) {
-        this.fidelityCard = fidelityCard;
-    }
-
-    public void setSales(List<Sale> sales) {
-        this.sales = sales;
+    public Customer(int userID, String firstName, String lastName, boolean isProfessional, char gender, int localityID, String mail) {
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.isProfessional = isProfessional;
+        this.gender = gender;
+        this.localityID = localityID;
+        this.mail = mail;
     }
 
     public int getUserID() {
         return userID;
     }
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public boolean isProfessional() {
         return isProfessional;
     }
 
-    public char getSexe() {
-        return sexe;
+    public void setProfessional(boolean professional) {
+        isProfessional = professional;
     }
 
-    public Contact getContact() {
-        return contact;
+    public char getGender() {
+        return gender;
     }
 
-    public Locality getLocality() {
-        return locality;
+    public void setGender(char gender) {
+        this.gender = gender;
     }
 
-    public FidelityCard getFidelityCard() {
-        return fidelityCard;
+    public int getLocalityID() {
+        return localityID;
     }
 
-    public List<Sale> getSales() {
-        return sales;
+    public void setLocalityID(int localityID) {
+        this.localityID = localityID;
     }
 
-    public String toString() {
-        return "Les informations du client sont: \nID: " + userID + "\nPrénom: " + firstName + "\nNom: " + lastName + "\nDate de naissance: " + birthDate + "\nProfessionnel: " + isProfessional + "\nSexe: " + sexe + "\n" + contact.toString() + "\n" + locality.toString() + "\n" + fidelityCard.toString();
+    public String getMail() {
+        return mail;
     }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
 }
